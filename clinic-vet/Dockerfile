@@ -7,15 +7,20 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["clinic-vet/clinic-vet.csproj", "clinic-vet/"]
-RUN dotnet restore "clinic-vet/clinic-vet.csproj"
+COPY ["clinic-vet.csproj", "."]
+RUN dotnet restore "./clinic-vet.csproj"
 COPY . .
-WORKDIR "/src/clinic-vet"
+WORKDIR "/src/."
 RUN dotnet build "clinic-vet.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "clinic-vet.csproj" -c Release -o /app/publish 
+
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "clinic-vet.dll"]
+
+
+
+
