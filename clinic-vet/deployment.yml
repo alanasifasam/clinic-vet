@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: clinic-vet
-        image: clinicinsurancehealthrc.azurecr.io/clinic-vet:latest
+        image: clinicinsurancehealthrc.azurecr.io/clinic-vet2:latest
         ports:
         - containerPort: 80
 ---
