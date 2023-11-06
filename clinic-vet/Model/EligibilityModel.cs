@@ -3,9 +3,8 @@
     [Serializable]
     public class EligibilityModel
     {
-            public Guid Id { get; set; }
-            public string Pet { get; set; }
-            public int NumeroPlano { get; set; }
+            public int Id { get; set; }
+            public Consulta consulta { get; set; }
         
     }
 }
